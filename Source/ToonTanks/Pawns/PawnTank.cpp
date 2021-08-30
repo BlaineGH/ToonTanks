@@ -18,14 +18,14 @@ APawnTank::APawnTank()
 void APawnTank::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
 // Called every frame
 void APawnTank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	Rotate();
+	Move();
 }
 
 // Called to bind functionality to input
@@ -46,14 +46,14 @@ void APawnTank::CalculateMoveInput(float Value)
 void APawnTank::CalculateRotateInput(float Value)
 {
 	float RotateAmount = Value * RotateSpeed * GetWorld()->DeltaTimeSeconds;
-	FRotator Rotation = FRotator(0, Rotation, 0);
+	FRotator Rotation = FRotator(0.f, RotateAmount, 0.f);
 	RotationDirection = FQuat(Rotation);
 }
 
 void APawnTank::Move() {
-
+	AddActorLocalOffset(MoveDirection, true);
 }
 void APawnTank::Rotate() {
-
+	AddActorLocalRotation(RotationDirection, true);
 }
 

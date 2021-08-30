@@ -35,9 +35,6 @@ private:
 	void Rotate();
 
 public:
-
-
-
 	APawnTank();
 
 	// Called every frame
