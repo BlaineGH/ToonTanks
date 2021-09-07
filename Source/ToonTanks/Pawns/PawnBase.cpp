@@ -40,3 +40,18 @@ void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
+
+void APawnBase::RotateTurretFunction(FVector LookAtTarget)
+{
+
+}
+
+void APawnBase::Fire()
+{
+
+}
+
+void APawnBase::HandleDestruction()
+{
+
+}
