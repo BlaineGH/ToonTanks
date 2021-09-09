@@ -41,14 +41,18 @@ void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }
 
-void APawnBase::RotateTurretFunction(FVector LookAtTarget)
+void APawnBase::RotateTurret(FVector LookAtTarget)
 {
-
+	FVector LookAtTargetCleaned = FVector(LookAtTarget.X, LookAtTarget.Y, TurretMesh->GetComponentLocation().Z);
+	FVector StartLocation = TurretMesh->GetComponentLocation();
+	FRotator TurretRotation = FVector(FVector(LookAtTargetCleaned - StartLocation)).Rotation();
+	TurretMesh->SetWorldRotation(TurretRotation);
 }
+
 
 void APawnBase::Fire()
 {
-
+	UE_LOG(LogTemp, Warning, TEXT("Fire Condition = True"));
 }
 
 void APawnBase::HandleDestruction()

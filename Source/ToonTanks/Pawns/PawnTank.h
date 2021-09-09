@@ -26,12 +26,17 @@ private:
 	FQuat RotationDirection;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
-	float MoveSpeed = 100.0f;
+	float MoveSpeed;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Controls", meta = (AllowPrivateAccess = "true"))
-	float RotateSpeed = 100.0f;
+	float RotateSpeed;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Controls", meta = (AllowPrivateAccess = "true"))
+	float BaseTurnRate;
+
+	APlayerController* PlayerControllerRef;
 
 	void CalculateMoveInput(float Value);
 	void CalculateRotateInput(float Value);
+	void RotateCamera(float Value);
 
 	void Move();
 	void Rotate();
@@ -49,5 +54,5 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
+	virtual void HandleDestruction() override;
 };
